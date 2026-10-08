@@ -8,6 +8,8 @@
 
 独立 fork 用于实现每用户的活动隧道计数、每分钟用量快照和最终结算。Dashboard、SSH 节点工具留在 naive-dashboard；数据转发层修改留在 forwardproxy fork。
 
+**已确认的维护决定（2026-10-08）：本次不合并或 cherry-pick `caddyserver/forwardproxy` 上游的 6 个提交。**用户优先保留现有稳定行为。固定经过验证的 Naive/Caddy 构建基线，仅围绕所需统计功能开发；版本、依赖及 QUIC 实现升级另行讨论，不与本次功能开发捆绑。
+
 ## 当前提交关系
 
 | 分支 | 提交 |
@@ -50,9 +52,9 @@ git switch -c codex/usage-accounting
 - `upstream`：直接跟踪 klzgrad 的 Naive 更新。
 - `caddy-upstream`：观察 Caddy 通用修复及依赖更新。
 
-维护时优先跟踪 Naive 上游。对于 Caddy 上游需要提前引入的修复，建立独立集成分支，审查、测试后再合入；不要仅为消除 GitHub 的 behind 提示直接同步生产。保留纯 Naive 基线，方便比较自己的计量改动；共享分支不自动 force push。
+两个上游 remote 用于查看变化，不代表自动合并授权。当前保持固定基线，不因 GitHub 的 behind 提示同步上游。保留纯 Naive 基线，方便比较自己的计量改动；共享分支不自动 force push。未来如确需上游修复，单独说明影响并讨论升级安排。
 
-首次 fork 后不需要立即合并 Caddy 的 6 个提交。应先建立可复现的 Naive 构建基线，再独立评估依赖同步，最后添加统计功能。
+首次 fork 后先建立可复现的 Naive 构建基线，再添加统计功能；本次不安排 Caddy 上游集成分支。临时目录的试合并仅用于调查，不能作为本项目的已批准基线。fork 最新分支也不意味着将当前运行的 Caddy v2.11.2 自动升级到最新构建版本。
 
 ## 构建上的重要区别
 
