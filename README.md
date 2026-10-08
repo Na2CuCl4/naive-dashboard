@@ -48,6 +48,8 @@ DASHBOARD_COOKIE_SECURE=false docker compose up -d --build
 
 ## 本地开发与测试
 
+换电脑可直接 clone 两个仓库的 `main` 后继续开发；完整初始化、平台支持与未纳入 Git 的数据见 [本地开发指南](docs/local-development.md)。
+
 固定 Go 1.22.12，Dashboard 编译需要 C 编译器（SQLite）。前端为原生 ES modules，无 npm 生产依赖。
 
 ```bash

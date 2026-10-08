@@ -4,8 +4,9 @@
 
 ## 项目与仓库
 
-- Dashboard：`/home/ubuntu/naive-dashboard`，origin 为 `git@github.com:Na2CuCl4/naive-dashboard.git`，当前工作分支 `codex/bootstrap`。
-- 代理模块：`/home/ubuntu/forwardproxy`，origin 为 `git@github.com:Na2CuCl4/forwardproxy.git`，当前 `naive` 跟踪 `origin/naive`。
+- Dashboard：原开发机 `/home/ubuntu/naive-dashboard`，origin 为 `git@github.com:Na2CuCl4/naive-dashboard.git`；MVP 已从 `codex/mvp` 归并到 `main`。
+- 代理模块：原开发机 `/home/ubuntu/forwardproxy`，origin 为 `git@github.com:Na2CuCl4/forwardproxy.git`；fork 原 `naive` 分支已更名为 `main`，计量开发分支 `codex/usage-metering` 已归并。
+- 换机器时目录可自行选择，建议两仓库同级；工具、启动和平台要求见 [本地开发指南](local-development.md)。
 - 代理基线 HEAD：`c096d6a00cb28e019cc1995b04bdc6a9311d8024`，来自 klzgrad 的 `naive`。
 - 代理 upstream：`https://github.com/klzgrad/forwardproxy.git`；caddy-upstream：`https://github.com/caddyserver/forwardproxy.git`。
 - GitHub SSH 已成功认证为 `Na2CuCl4`。不要将 GitHub 登录密钥当作 VPN 节点的控制密钥。
