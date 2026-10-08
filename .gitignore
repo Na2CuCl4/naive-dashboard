@@ -1,0 +1,9 @@
+.env
+.env.*
+*.sqlite
+*.db
+secrets/
+ssh/
+known_hosts
+node_modules/
+dist/
