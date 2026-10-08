@@ -1,0 +1,18 @@
+name: Dashboard and node checks
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: go test -race ./...
+      - run: go vet ./...
+      - run: node --test web/i18n_test.mjs
+      - run: docker compose config --quiet
+      - run: docker build -t naive-dashboard:ci .

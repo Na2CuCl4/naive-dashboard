@@ -1,0 +1,22 @@
+services:
+  test-node:
+    image: naive-dashboard-test-node:local
+    ports:
+      - "127.0.0.1:18089:8081"
+    volumes:
+      - ./control.pub:/control.pub:ro
+      - node-keys:/keys
+  dashboard:
+    image: naive-dashboard:local
+    ports:
+      - "127.0.0.1:18088:8080"
+    environment:
+      DASHBOARD_COOKIE_SECURE: "false"
+    volumes:
+      - dashboard-data:/data
+      - ./admin_password:/run/secrets/admin_password:ro
+      - ./ssh:/run/secrets/ssh:ro
+    depends_on: [test-node]
+volumes:
+  dashboard-data:
+  node-keys:

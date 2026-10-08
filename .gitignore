@@ -7,3 +7,6 @@ ssh/
 known_hosts
 node_modules/
 dist/
+*.db-*
+.test/
+bin/

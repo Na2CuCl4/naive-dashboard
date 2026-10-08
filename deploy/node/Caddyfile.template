@@ -1,0 +1,17 @@
+{
+	admin 127.0.0.1:2019
+	order forward_proxy before file_server
+}
+
+# Replace the hostname during manual bootstrap. Preserve the node's other sites
+# and settings in this COMPLETE template before allowing Dashboard application.
+proxy.example.com {
+	forward_proxy {
+		# NAIVE_USERS
+		usage_log /var/lib/naive-usage
+		hide_ip
+		hide_via
+		probe_resistance
+	}
+	respond ""
+}

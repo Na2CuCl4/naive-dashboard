@@ -1,0 +1,18 @@
+{
+ admin 127.0.0.1:2019
+ auto_https off
+ order forward_proxy before respond
+}
+:8081 {
+ forward_proxy {
+  # NAIVE_USERS
+  hide_ip
+  hide_via
+  usage_log /var/lib/naive-usage
+  acl {
+   allow 127.0.0.1
+   deny all
+  }
+ }
+ respond "local integration node"
+}

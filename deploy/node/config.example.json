@@ -1,0 +1,9 @@
+{
+  "caddy_binary": "/usr/bin/caddy",
+  "caddy_config": "/etc/caddy/Caddyfile",
+  "template_file": "/etc/naive-node/Caddyfile.template",
+  "state_dir": "/var/lib/naive-node",
+  "usage_dir": "/var/lib/naive-usage",
+  "admin_address": "127.0.0.1:2019",
+  "restart_command": ["/usr/bin/systemctl", "restart", "caddy.service"]
+}

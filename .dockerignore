@@ -1,0 +1,15 @@
+.git
+.env*
+secrets
+ssh
+node_modules
+bin
+dist
+*.db*
+.test
+docs
+README.md
+scripts
+.github
+web/*_test.mjs
+**/*_test.go

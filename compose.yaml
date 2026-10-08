@@ -1,0 +1,23 @@
+services:
+  dashboard:
+    build: .
+    image: naive-dashboard:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${DASHBOARD_PORT:-8080}:8080"
+    environment:
+      DASHBOARD_COOKIE_SECURE: "${DASHBOARD_COOKIE_SECURE:-true}"
+      DASHBOARD_ADMIN_PASSWORD_FILE: /run/secrets/admin_password
+      DASHBOARD_SSH_KEY_DIR: /run/secrets/ssh
+    volumes:
+      - dashboard-data:/data
+      - ./secrets/admin_password:/run/secrets/admin_password:ro
+      - ./secrets/ssh:/run/secrets/ssh:ro
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  dashboard-data:
