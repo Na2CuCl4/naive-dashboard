@@ -1,6 +1,6 @@
 # forwardproxy fork 调研与维护方案
 
-核查日期：2026-10-08（Asia/Shanghai）。本次只调查远端历史并在临时目录试合并，未改变正在运行的 Caddy，也未建立 `/home/ubuntu/forwardproxy`。
+核查日期：2026-10-08（Asia/Shanghai）。首次调研仅在临时目录调查历史和试合并，未改变正在运行的 Caddy。随后用户已将自己的 fork clone 至 `/home/ubuntu/forwardproxy`。
 
 ## 结论
 
@@ -34,19 +34,15 @@ Caddy 上游的 6 个提交涉及 README、CI 和 `go.mod`/`go.sum`（包含 qui
 
 在 klzgrad 仓库页面创建 `Na2CuCl4/forwardproxy`，确认复制了 `naive` 分支。只复制默认分支即可满足开发需要，不必导入陈旧 `master`。
 
-用户计划自行 clone 至 `/home/ubuntu/forwardproxy`。SSH 认证就绪后，可执行：
+已验证用户的 GitHub SSH 认证，`/home/ubuntu/forwardproxy` 已存在，当前 `naive` 分支跟踪 `origin/naive`，HEAD 为上表中的 `c096d6a`。三个 remote 已配置；以下为完成后的布局，无需重复创建：
 
 ```bash
-git clone --branch naive git@github.com:Na2CuCl4/forwardproxy.git ~/forwardproxy
-cd ~/forwardproxy
-git remote add upstream https://github.com/klzgrad/forwardproxy.git
-git remote add caddy-upstream https://github.com/caddyserver/forwardproxy.git
-git fetch upstream
-git fetch caddy-upstream
-git switch -c codex/usage-accounting
+origin          git@github.com:Na2CuCl4/forwardproxy.git
+upstream        https://github.com/klzgrad/forwardproxy.git
+caddy-upstream  https://github.com/caddyserver/forwardproxy.git
 ```
 
-若当前机器尚未配置 GitHub SSH 登录，可将 clone URL 换成公开仓库的 HTTPS URL；这只解决公开读取，推送仍需适当授权。
+后续开始计量开发时，从固定的 Naive 基线建立 `codex/` 功能分支；本次交接没有在 forwardproxy 中创建功能分支或修改代理代码。
 
 - `origin`：自己的 fork，保存本项目改动。
 - `upstream`：直接跟踪 klzgrad 的 Naive 更新。
