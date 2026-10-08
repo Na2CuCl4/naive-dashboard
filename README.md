@@ -7,3 +7,5 @@
 ## 当前状态
 
 项目目录已建立，尚未连接任何 VPN 节点，也没有保存 SSH 私钥或主机指纹。节点接入应先在节点上手动完成安全 bootstrap，再由 Dashboard 管理后续配置。
+
+节点接入和 Docker 中的 SSH 文件布局见 [docs/node-onboarding.md](docs/node-onboarding.md)。
